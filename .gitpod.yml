@@ -1,0 +1,29 @@
+# Définition de l'image de base
+image:
+  file: .gitpod.Dockerfile
+
+# Liste des pré-builds, exécutions de commandes à l'initialisation
+tasks:
+  - name: Install .NET SDK and Maui dependencies
+    command: |
+      dotnet tool install -g redth.net.maui.check
+      dotnet maui-check
+      dotnet new maui-check
+
+# Définition des ports à ouvrir pour accéder à l'application
+ports:
+  - port: 8080
+    onOpen: ignore
+    visibility: public
+
+# Définition des extensions VS Code à installer
+vscode:
+  extensions:
+    - ms-dotnettools.csharp
+    - omnisharp.vscode-dotnet-pack
+    - redth.maui-debug
+    - sqlite.sqlite
+
+# Configuration supplémentaire
+# ...
+
